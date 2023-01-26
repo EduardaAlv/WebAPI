@@ -21,7 +21,12 @@ namespace WebAPI.Controllers
             _context.Add(contato);
             _context.SaveChanges();
 
+            //existem duas opções de retorno:
+            //retorno padrão:
             return Ok(contato);
+
+            //retorno que após inserir, informa a rota na qual o usuário/aplicação poderá utilizar para obter o objeto inserido
+            //return CreatedAtAction(nameof(ProcurePorId), new { id = contato.Id }, contato);
         }
 
         [HttpGet("ProcurePorId/{id}")]
