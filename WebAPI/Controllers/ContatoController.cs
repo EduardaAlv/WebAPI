@@ -37,6 +37,14 @@ namespace WebAPI.Controllers
             return Ok(contato);
         }
 
+        [HttpGet("ProcurePorNome/{id}")]
+        public IActionResult ProcurePorNome(string nome)
+        {
+            var contatos = _context.Contatos.Where(x => x.Nome.Contains(nome));
+
+            return Ok(contatos);
+        }
+
         [HttpPut("Atualizar/{id}")]
         public IActionResult Atualizar(int id, Contato contato)
         {
